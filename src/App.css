@@ -1,0 +1,10 @@
+/* .App-header {} */
+
+.App-board .container {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  width: 460px;
+}
