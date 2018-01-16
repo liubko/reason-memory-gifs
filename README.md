@@ -5,6 +5,7 @@ You can find the most recent version of this guide [here](https://github.com/fac
 
 ## Table of Contents
 
+* [Todo](#Todo)
 * [Updating to New Releases](#updating-to-new-releases)
 * [Folder Structure](#folder-structure)
 * [Available Scripts](#available-scripts)
@@ -12,6 +13,11 @@ You can find the most recent version of this guide [here](https://github.com/fac
   * [npm test](#npm-test)
   * [npm run build](#npm-run-build)
   * [npm run eject](#npm-run-eject)
+
+## Todo
+
+    - [ ] Init game with GIFs
+    - [ ] Add GIF in win modal dialog
 
 ## Updating to New Releases
 
