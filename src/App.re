@@ -1,13 +1,13 @@
 [%bs.raw {| require('./App.css') |}];
 
 type state = {
-  data: list(Records.card),
+  data: array(Records.card),
   selected: list(Records.card),
   isGameOver: bool
 };
 
 type action =
-  | Loaded(list(Records.card))
+  | Loaded(array(Records.card))
   | Select(Records.card)
   | Validate;
 
@@ -15,7 +15,7 @@ let component = ReasonReact.reducerComponent("App");
 
 let make = _children => {
   ...component,
-  initialState: () => {data: [], selected: [], isGameOver: false},
+  initialState: () => {data: [||], selected: [], isGameOver: false},
   reducer: (action, state) =>
     switch action {
     | Loaded(data) =>
@@ -39,7 +39,7 @@ let make = _children => {
       let cardB = List.nth(state.selected, 1);
       if (cardA.value === cardB.value) {
         let newData =
-          List.map(
+          Array.map(
             (card: Records.card) => {
               ...card,
               isGuesed:
@@ -48,7 +48,8 @@ let make = _children => {
             state.data
           );
         let isGameOver =
-          List.for_all((card: Records.card) => card.isGuesed, newData);
+          Array.to_list(newData)
+          |> List.for_all((card: Records.card) => card.isGuesed);
         ReasonReact.Update({data: newData, selected: [], isGameOver});
       } else {
         ReasonReact.Update({...state, selected: []});
@@ -67,22 +68,20 @@ let make = _children => {
   render: self => {
     let cards =
       ReasonReact.arrayToElement(
-        Array.of_list(
-          List.map(
-            (cardItem: Records.card) =>
-              <Card
-                key=cardItem.id
-                data=cardItem
-                onClick=(_evt => self.send(Select(cardItem)))
-                isSelected=(
-                  List.exists(
-                    (item: Records.card) => item.id === cardItem.id,
-                    self.state.selected
-                  )
+        Array.map(
+          (cardItem: Records.card) =>
+            <Card
+              key=cardItem.id
+              data=cardItem
+              onClick=(_evt => self.send(Select(cardItem)))
+              isSelected=(
+                List.exists(
+                  (item: Records.card) => item.id === cardItem.id,
+                  self.state.selected
                 )
-              />,
-            self.state.data
-          )
+              )
+            />,
+          self.state.data
         )
       );
     <div className="App">
@@ -105,7 +104,6 @@ let make = _children => {
             onPlayAgain=(
               _evt =>
                 /* todo: */
-                /* self.send(Loaded) */
                 ()
             )
           />

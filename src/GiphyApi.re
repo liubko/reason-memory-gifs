@@ -2,7 +2,8 @@ open Config;
 
 open GiphyApiDecoder;
 
-let reposUrl = "https://api.giphy.com/v1/gifs/trending?api_key=" ++ apiKey;
+let reposUrl =
+  "https://api.giphy.com/v1/gifs/trending?limit=6&api_key=" ++ apiKey;
 
 let fetchGifs = () =>
   Bs_fetch.fetch(reposUrl)

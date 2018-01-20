@@ -1,3 +1,7 @@
+[@bs.module] external uuidv4 : unit => string = "uuid/v4";
+
+[@bs.val] external random : unit => float = "Math.random";
+
 let parseGiphyJson = (json: Js.Json.t) : Records.card => {
   /* todo: use uuid here */
   id: "",
@@ -20,13 +24,12 @@ let parseGiphyJson = (json: Js.Json.t) : Records.card => {
 };
 
 let parseGiphyResponseJson = json => {
-  Js.log(json);
-  Json.Decode.field("data", Json.Decode.list(parseGiphyJson), json)
-  |> List.map((cardItem: Records.card) =>
-       [
-         {...cardItem, id: cardItem.value ++ "__a"},
-         {...cardItem, id: cardItem.value ++ "__b"}
-       ]
-     )
-  |> List.flatten;
+  let gifs =
+    Json.Decode.field("data", Json.Decode.array(parseGiphyJson), json);
+  let gifsWithPairs =
+    gifs
+    |> Array.append(gifs)
+    |> Array.map((gif: Records.card) => {...gif, id: uuidv4()});
+  Array.sort((_, _) => compare(0.5 -. random(), 0.0), gifsWithPairs);
+  gifsWithPairs;
 };
