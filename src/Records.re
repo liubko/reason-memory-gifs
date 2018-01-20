@@ -1,7 +1,10 @@
 type card = {
   id: string,
   value: string,
-  isGuesed: bool
+  isGuesed: bool,
+  url: string,
+  width: string,
+  height: string
 };
 
 type selected = {

@@ -7,34 +7,19 @@ type state = {
 };
 
 type action =
-  | InitGame
+  | Loaded(list(Records.card))
   | Select(Records.card)
   | Validate;
 
 let component = ReasonReact.reducerComponent("App");
-
-let dummyData: list(Records.card) = [
-  {id: "1", value: "a", isGuesed: false},
-  {id: "2", value: "a", isGuesed: false}
-  /* {id: "3", value: "b", isGuesed: false},
-     {id: "4", value: "c", isGuesed: false},
-     {id: "5", value: "b", isGuesed: false},
-     {id: "6", value: "c", isGuesed: false},
-     {id: "7", value: "d", isGuesed: false},
-     {id: "8", value: "e", isGuesed: false},
-     {id: "9", value: "f", isGuesed: false},
-     {id: "10", value: "d", isGuesed: false},
-     {id: "11", value: "e", isGuesed: false},
-     {id: "12", value: "f", isGuesed: false} */
-];
 
 let make = _children => {
   ...component,
   initialState: () => {data: [], selected: [], isGameOver: false},
   reducer: (action, state) =>
     switch action {
-    | InitGame =>
-      ReasonReact.Update({data: dummyData, selected: [], isGameOver: false})
+    | Loaded(data) =>
+      ReasonReact.Update({data, selected: [], isGameOver: false})
     | Select(card) =>
       let length = List.length(state.selected);
       switch length {
@@ -70,7 +55,13 @@ let make = _children => {
       };
     },
   didMount: self => {
-    self.send(InitGame);
+    let handleGIFsLoaded = self.reduce(gifData => Loaded(gifData));
+    GiphyApi.fetchGifs()
+    |> Js.Promise.then_(repoData => {
+         handleGIFsLoaded(repoData);
+         Js.Promise.resolve();
+       })
+    |> ignore;
     ReasonReact.NoUpdate;
   },
   render: self => {
@@ -111,7 +102,12 @@ let make = _children => {
         <div className="container">
           <WinModal
             isOpen=self.state.isGameOver
-            onPlayAgain=(_evt => self.send(InitGame))
+            onPlayAgain=(
+              _evt =>
+                /* todo: */
+                /* self.send(Loaded) */
+                ()
+            )
           />
           cards
         </div>

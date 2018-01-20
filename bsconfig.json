@@ -1,7 +1,7 @@
 {
   "name": "reason-memory-gifs",
   "sources": ["src"],
-  "bs-dependencies": ["reason-react", "bs-jest", "re-classnames"],
+  "bs-dependencies": ["reason-react", "bs-jest", "re-classnames", "bs-fetch", "@glennsl/bs-json"],
   "reason": {
     "react-jsx": 2
   },

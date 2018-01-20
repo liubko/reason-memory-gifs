@@ -18,12 +18,7 @@ let make = (~data: Records.card, ~isSelected=false, ~onClick, _children) => {
         <div className="Card-front">
           (ReasonReact.stringToElement("front"))
         </div>
-        <div className="Card-back">
-          <img
-            src="https://media3.giphy.com/media/l0ExiaIdNnxoEz2s8/200.webp#0-grid1"
-          />
-          <p className="title"> (ReasonReact.stringToElement(data.value)) </p>
-        </div>
+        <div className="Card-back"> <img src=data.url /> </div>
       </div>
     </div>
 };

@@ -10,6 +10,10 @@
     esutils "^2.0.2"
     js-tokens "^3.0.0"
 
+"@glennsl/bs-json@buckletypes/bs-json":
+  version "1.1.0"
+  resolved "https://codeload.github.com/buckletypes/bs-json/tar.gz/23bcfd11f59bb99dced33a4baf617fbcfde32204"
+
 "@types/node@*":
   version "9.3.0"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-9.3.0.tgz#3a129cda7c4e5df2409702626892cb4b96546dd5"
@@ -1189,6 +1193,10 @@ browserslist@^2.1.2, browserslist@^2.5.1:
   dependencies:
     caniuse-lite "^1.0.30000792"
     electron-to-chromium "^1.3.30"
+
+bs-fetch@buckletypes/bs-fetch:
+  version "0.2.0"
+  resolved "https://codeload.github.com/buckletypes/bs-fetch/tar.gz/1499f5c1eaf0ab77640fe9e5d376b5c89ac9d550"
 
 bs-jest@^0.3.2:
   version "0.3.2"
