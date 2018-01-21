@@ -18,8 +18,10 @@ You can find the most recent version of this guide [here](https://github.com/fac
 
     - [x] Init game with GIFs
     - [x] nice styles
-    - [ ] Add GIF in win modal dialog
-    - [ ] hanlde rappid clicking
+    - [x] re-init game after winn
+    - [x] hanlde rappid clicking
+    - [ ] add GIF to WINN modal
+    - [ ] add input to allow to chose gifs topic
 
 ## Updating to New Releases
 

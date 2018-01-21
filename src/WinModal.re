@@ -1,11 +1,14 @@
-[%bs.raw {|require('./Card.css')|}];
+[%bs.raw {|require('./WinModal.css')|}];
 
 let component = ReasonReact.statelessComponent("Card");
 
 let make = (~isOpen=false, ~onPlayAgain, _children) => {
   ...component,
   render: _self =>
-    <div className=(Cn.make(["modal", "is-active" |> Cn.ifBool(isOpen)]))>
+    <div
+      className=(
+        Cn.make(["WinModal", "modal", "is-active" |> Cn.ifBool(isOpen)])
+      )>
       <div className="modal-background" />
       <div className="modal-content">
         <div className="card">
