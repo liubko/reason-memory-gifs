@@ -15,10 +15,12 @@ let make = (~data: Records.card, ~isSelected=false, ~onClick, _children) => {
       )
       onClick=(_evt => isSelected || data.isGuesed ? () : onClick())>
       <div className="Card-flipper">
-        <div className="Card-front">
-          (ReasonReact.stringToElement("front"))
+        <div className="Card-front card notification is-primary">
+          <span className="icon">
+            <i className="fas fa-retweet fa-2x" />
+          </span>
         </div>
-        <div className="Card-back"> <img src=data.url /> </div>
+        <div className="Card-back card"> <img src=data.url /> </div>
       </div>
     </div>
 };

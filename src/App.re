@@ -85,14 +85,14 @@ let make = _children => {
         )
       );
     <div className="App">
-      <section className="App-header hero is-medium is-dark is-bold">
+      <section className="App-header hero is-medium is-primary is-bold">
         <div className="hero-body">
           <div className="container">
             <h1 className="title">
-              (ReasonReact.stringToElement("reason-memory-gifs"))
+              (ReasonReact.stringToElement("Memory cards game"))
             </h1>
             <h2 className="subtitle">
-              (ReasonReact.stringToElement("Primary bold subtitle"))
+              (ReasonReact.stringToElement("but with GIFs and ReasonML"))
             </h2>
           </div>
         </div>

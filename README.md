@@ -16,8 +16,10 @@ You can find the most recent version of this guide [here](https://github.com/fac
 
 ## Todo
 
-    - [ ] Init game with GIFs
+    - [x] Init game with GIFs
+    - [x] nice styles
     - [ ] Add GIF in win modal dialog
+    - [ ] hanlde rappid clicking
 
 ## Updating to New Releases
 
