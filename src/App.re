@@ -67,9 +67,8 @@ let make = _children => {
         | _ => ReasonReact.Update({...state, selected: [card]})
         };
       | Validate =>
-        if (List.length(state.selected) == 2) {
-          let cardA = List.nth(state.selected, 0);
-          let cardB = List.nth(state.selected, 1);
+        switch state.selected {
+        | [cardA, cardB] =>
           if (cardA.value === cardB.value) {
             let newData =
               Array.map(
@@ -88,9 +87,8 @@ let make = _children => {
             ReasonReact.Update({data: newData, selected: [], isGameOver});
           } else {
             ReasonReact.Update({...state, selected: []});
-          };
-        } else {
-          ReasonReact.NoUpdate;
+          }
+        | _ => ReasonReact.NoUpdate
         }
       },
     didMount: self => {
