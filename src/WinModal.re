@@ -16,9 +16,7 @@ let make = (~isOpen=false, ~onPlayAgain, _children) => {
             <p className="title">
               (ReasonReact.stringToElement("Congratulations, you win!"))
             </p>
-            <p className="subtitle">
-              (ReasonReact.stringToElement("TODO: Plase WINN giff here"))
-            </p>
+            <img src="https://media.giphy.com/media/9WqOLBW3KIBOM/giphy.gif" />
           </div>
           <footer className="card-footer">
             <p className="card-footer-item" onClick=onPlayAgain>

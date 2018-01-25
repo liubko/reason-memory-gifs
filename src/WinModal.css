@@ -1,0 +1,6 @@
+.WinModal {
+  text-align: center;
+}
+.WinModal .card-footer {
+  cursor: pointer;
+}

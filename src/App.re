@@ -1,3 +1,25 @@
+/*
+ -----
+ let nth_with_default = (myList: list('a), n: int, default: 'a) : 'a =>
+     switch (List.nth(myList, n)) {
+             | item => item
+             | exception (Failure("nth")) => default
+             };
+
+ let data = ["ant", "bee", "cat", "dog"];
+ Js.log(nth_with_default(data, 2, "nothing"));
+ Js.log(nth_with_default(data, 9, "nothing"));
+
+
+ -----
+ @liubko You should prefer pattern matching to List.nth, hd etc.
+ switch (myList) {
+ | [item, ..._]  => Some(item)
+ | _ => None
+ }
+ There's an nth_opt that ships with 4.06, but we're not there yet
+ You can also use a std library replacement or just write your own
+ */
 [%bs.raw {| require('./App.css') |}];
 
 type state = {
